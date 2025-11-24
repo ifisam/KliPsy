@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsyRAI Loading</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
+        <span class="icon">☀️</span>
+    </button>
+
+    <main class="container">
+        <!-- State 1: Submit Button -->
+        <div id="submit-view" class="view active">
+            <button id="submit-btn" class="btn-primary">Submit</button>
+        </div>
+
+        <!-- State 2: Loading -->
+        <div id="loading-view" class="view hidden">
+            <h2 class="status-text">PsyRAI is thinking<span class="dots">...</span></h2>
+            <div class="progress-container">
+                <div class="progress-bar-wrapper">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <div class="progress-info">
+                    <span class="loading-label">LOADING...</span>
+                    <span id="progress-text">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- State 3: Result -->
+        <div id="result-view" class="view hidden">
+            <h2 class="result-text">Result Published</h2>
+            <button id="reset-btn" class="btn-secondary">Reset</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

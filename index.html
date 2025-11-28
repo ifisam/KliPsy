@@ -16,7 +16,7 @@
 <body>
 
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
-        <span class="icon">☀️</span>
+        <span class="icon">🌙</span>
     </button>
 
     <main class="container">
@@ -41,7 +41,16 @@
 
         <!-- State 3: Result -->
         <div id="result-view" class="view hidden">
-            <h2 class="result-text">Result Published</h2>
+            <div class="result-header">
+                <!-- Extreme Werte anzeigen Button is not used in this version -->
+                <!-- <button id="show-extreme-btn" class="btn-filter">Extreme Werte anzeigen</button> -->
+                <button id="show-all-btn" class="btn-filter">Alle Werte anzeigen</button>
+            </div>
+            <div id="results-container" class="results-list">
+            </div>
+            <div id="results-container" class="results-list">
+                <!-- Accordion items will be injected here by JS -->
+            </div>
             <button id="reset-btn" class="btn-secondary">Reset</button>
         </div>
     </main>

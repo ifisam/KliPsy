@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeIcon = themeToggle.querySelector('.icon');
 
     const resultsContainer = document.getElementById('results-container');
-    const showExtremeBtn = document.getElementById('show-extreme-btn');
     const showAllBtn = document.getElementById('show-all-btn');
 
     // Mock Data based on the reference image
@@ -21,19 +20,72 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Immediacy of response",
             metrics: [
                 { name: "Immediacy of response", value: 3 }
-            ]
+            ],
+            reasoning: `
+                <h3>Evaluation and Reasoning:</h3>
+                <ol>
+                    <li><strong>Temporal Component:</strong>
+                        <ul>
+                            <li>You begin with a brief delay ("…"), indicating a moment of pause before responding.</li>
+                            <li>Despite that initial silence, you quickly move into a validating statement demonstrating understanding of the patient's perspective.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Delay Tactics:</strong>
+                        <ul>
+                            <li>You do not use generic statements or filler questions; instead, you directly address the patient's feelings and their curiosity about therapy motivation.</li>
+                            <li>Your response combines validation ("I can understand well how you came to this conclusion") with exploration ("there is of course some incentive … that led you here today").</li>
+                        </ul>
+                    </li>
+                    <li><strong>Conclusion:</strong>
+                        <ul>
+                            <li>You respond relatively quickly after the pause and engage meaningfully with the patient.</li>
+                            <li>Your answer aligns with the criteria of picking up emotions, validating, showing understanding, and strengthening the therapeutic relationship.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <p><strong>Summary:</strong> Overall, your response is immediate and direct, using validation and exploration without unnecessary delay.</p>
+            `
         },
         {
-            title: "Timing/Efficiency",
+            title: "Emphasis",
             metrics: [
-                { name: "Timing/Efficiency", value: 2 }
-            ]
+                { name: "Emphasis", value: 2 }
+            ],
+            reasoning: `
+                <h3>Evaluation and Reasoning:</h3>
+                <ol>
+                    <li><strong>Efficiency & Structure:</strong>
+                        <ul>
+                            <li>Your response is long with filler words.</li>
+                            <li>Repetitions do not add insight.</li>
+                            <li>The structure feels scattered.</li>
+                            <li>You digress instead of addressing emotions directly.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <p><strong>Conclusion:</strong> Your response is unstructured and inefficient, weakening clarity and emotional attunement.</p>
+            `
         },
         {
             title: "Focus (on central cognitions, emotions, behaviors, motivation, resources)",
             metrics: [
                 { name: "Focus (on central cognitions, emotions, behaviors, motivation, resources)", value: 4 }
-            ]
+            ],
+            reasoning: `
+                <h3>Evaluation and Reasoning:</h3>
+                <ol>
+                    <li><strong>Criteria Alignment:</strong>
+                        <ul>
+                            <li>You validate the patient's exhaustion and workload.</li>
+                            <li>But you move too quickly into solutions.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <p><strong>Conclusion:</strong> Partially aligned; deeper exploration of emotions was needed.</p>
+            `
         },
         {
             title: "Clarity of communication",
@@ -51,19 +103,59 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Self-Assurance",
             metrics: [
                 { name: "Self-Assurance", value: 4 }
-            ]
+            ],
+            reasoning: `
+                <h3>Evaluation and Reasoning:</h3>
+                <ol>
+                    <li><strong>Self-Confidence Cues:</strong>
+                        <ul>
+                            <li>You express certainty by acknowledging the patient's achievements, showing confidence in your understanding of their perspective.</li>
+                            <li>You communicate clearly and confidently introduce curiosity about what brought them to therapy.</li>
+                            <li>Your directive phrasing conveys a proactive stance.</li>
+                            <li>You avoid evasive language.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <p><strong>Conclusion:</strong> You appear credible and self-confident, balancing understanding with an invitation to exploration.</p>
+            `
         },
         {
             title: "Fluency",
             metrics: [
                 { name: "Fluency", value: 3 }
-            ]
+            ],
+            reasoning: `
+                <h3>Evaluation and Reasoning:</h3>
+                <ol>
+                    <li><strong>Speech Fluency:</strong>
+                        <ul>
+                            <li>One brief hesitation ("Mhh") appears natural.</li>
+                            <li>Flow remains coherent.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <p><strong>Conclusion:</strong> You speak fluently; hesitation is natural and not disruptive.</p>
+            `
         },
         {
             title: "Fillers",
             metrics: [
                 { name: "Fillers", value: 5 }
-            ]
+            ],
+            reasoning: `
+                <h3>Evaluation and Reasoning:</h3>
+                <ol>
+                    <li><strong>Filler Words:</strong>
+                        <ul>
+                            <li>High number of fillers disrupts clarity.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <p><strong>Conclusion:</strong> The frequency of filler words weakens communication effectiveness.</p>
+            `
         },
         {
             title: "Professional correctness",
@@ -75,7 +167,19 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Global rating of therapeutic competence",
             metrics: [
                 { name: "Global rating of therapeutic competence", value: 2 }
-            ]
+            ],
+            reasoning: `
+                <h3>Evaluation and Reasoning:</h3>
+                <ol>
+                    <li><strong>Therapeutic Alignment:</strong>
+                        <ul>
+                            <li>You show empathy but shift too quickly to problem-solving.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <p><strong>Conclusion:</strong> Partially aligned; deeper emotional validation required before offering solutions.</p>
+            `
         }
     ];
 
@@ -88,11 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     submitBtn.addEventListener('click', startLoading);
     resetBtn.addEventListener('click', resetState);
-
-    // Result Page Logic
-    if (showExtremeBtn) {
-        showExtremeBtn.addEventListener('click', showExtremeValues);
-    }
     showAllBtn.addEventListener('click', showAllValues);
 
     function startLoading() {
@@ -164,10 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
             accordionItem.className = 'accordion-item';
             accordionItem.id = `accordion-${index}`;
 
-            // Check if item has extreme values for filtering/highlighting logic later if needed
-            const hasExtreme = item.metrics.some(m => m.value >= 90);
-            if (hasExtreme) accordionItem.dataset.extreme = "true";
-
             const header = document.createElement('div');
             header.className = 'accordion-header';
             header.innerHTML = `
@@ -223,6 +318,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 metricsContainer.appendChild(metricItem);
             });
 
+            // Add Reasoning Box if present
+            if (item.reasoning) {
+                const reasoningBox = document.createElement('div');
+                reasoningBox.className = 'reasoning-box';
+                reasoningBox.innerHTML = `
+                    <h4 class="reasoning-title">PsyRAI Reasoning</h4>
+                    <div class="reasoning-content">${item.reasoning}</div>
+                `;
+                metricsContainer.appendChild(reasoningBox);
+            }
+
             content.appendChild(metricsContainer);
             accordionItem.appendChild(header);
             accordionItem.appendChild(content);
@@ -238,18 +344,5 @@ document.addEventListener('DOMContentLoaded', () => {
     function showAllValues() {
         const items = document.querySelectorAll('.accordion-item');
         items.forEach(item => item.classList.add('active'));
-    }
-
-    function showExtremeValues() {
-        const items = document.querySelectorAll('.accordion-item');
-        items.forEach(item => {
-            if (item.dataset.extreme === "true") {
-                item.classList.add('active');
-                item.style.display = 'block';
-            } else {
-                item.classList.remove('active');
-                item.style.display = 'none'; // Hide non-extreme items
-            }
-        });
     }
 });

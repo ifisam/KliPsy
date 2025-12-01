@@ -59,7 +59,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 900px;
     padding: 2rem;
     text-align: center;
     position: relative;
@@ -192,32 +192,6 @@ body {
     margin-top: 0.5rem;
 }
 
-/* Result State Styling */
-.result-text {
-    font-size: 2rem;
-    color: var(--accent-color);
-    text-shadow: 0 0 15px var(--accent-glow);
-    font-family: var(--font-mono);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        opacity: 0.8;
-        text-shadow: 0 0 10px var(--accent-glow);
-    }
-
-    50% {
-        opacity: 1;
-        text-shadow: 0 0 20px var(--accent-color);
-    }
-
-    100% {
-        opacity: 0.8;
-        text-shadow: 0 0 10px var(--accent-glow);
-    }
-}
-
 /* Utility to hide elements completely if needed */
 .hidden {
     opacity: 0;
@@ -294,7 +268,7 @@ body {
 }
 
 .accordion-header:hover {
-    background-color: #2a2a2a;
+    background-color: #4094da;
 }
 
 .accordion-title {
@@ -409,11 +383,11 @@ body {
 /* Dark Mode Overrides for Result Page */
 body.dark-mode .accordion-item {
     background-color: var(--secondary-bg);
-    border-color: #333;
+    border-color: #4094da;
 }
 
 body.dark-mode .accordion-header:hover {
-    background-color: #2a2a2a;
+    background-color: #b0d0d3;
 }
 
 body.dark-mode .accordion-content {
@@ -448,4 +422,74 @@ body.dark-mode .accordion-content {
 .dark-mode .scale-box {
     border-color: #444;
     background-color: var(--secondary-bg);
+}
+
+/* Reasoning Box Styling */
+.reasoning-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--secondary-bg);
+    border: 1px solid #444;
+    border-radius: 8px;
+    text-align: left;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.dark-mode .reasoning-box {
+    border-color: #444;
+    background-color: var(--secondary-bg);
+}
+
+/* Light mode override if needed, though variables handle most */
+body:not(.dark-mode) .reasoning-box {
+    border-color: #ccc;
+    background-color: #fff;
+}
+
+.reasoning-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.reasoning-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.reasoning-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.reasoning-content h3:first-child {
+    margin-top: 0;
+}
+
+.reasoning-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.reasoning-content ul {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    list-style-type: disc;
+}
+
+.reasoning-content li {
+    margin-bottom: 0.5rem;
+}
+
+.reasoning-content p {
+    margin-bottom: 1rem;
 }
